@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Поиск работ по году — Арт-галерея{% endblock %}
+{% block content %}
+<h1 class="page-title">Поиск произведений по году создания</h1>
+<form method="get" class="row g-3 mb-4">
+    <div class="col-sm-4">
+        <label for="min_year" class="form-label">С года</label>
+        <input type="number" min="1" class="form-control" id="min_year"
+               name="min_year" value="{{ min_year }}" required>
+    </div>
+    <div class="col-sm-4">
+        <label for="max_year" class="form-label">По год</label>
+        <input type="number" min="1" class="form-control" id="max_year"
+               name="max_year" value="{{ max_year }}" required>
+    </div>
+    <div class="col-sm-4 d-flex align-items-end">
+        <button class="btn btn-primary" type="submit">Найти</button>
+    </div>
+</form>
+{% if search_error %}<p class="text-danger">{{ search_error }}</p>{% endif %}
+{% if searched %}
+    <h2 class="h4">Результаты поиска</h2>
+    <div class="list-group">
+        {% for paint in paints %}
+            <a class="list-group-item list-group-item-action"
+               href="{% url 'paints:detail' paint.id %}">
+                {{ paint.title }} — {{ paint.artist }}, {{ paint.year }} г.
+            </a>
+        {% empty %}
+            <p class="text-muted">За указанный период работ не найдено.</p>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+<div class="col-md-6">
+    <article class="card h-100 artwork-card">
+        <div class="card-body">
+            <h2 class="h5 card-title">{{ collection.name }}</h2>
+            <p class="card-text text-muted">
+                {{ collection.description|default:"Описание отсутствует." }}
+            </p>
+            <p class="text-muted">Работ: {{ collection.paints_count }}</p>
+            <a href="{% url 'collections:detail' collection.id %}"
+               class="btn btn-outline-primary">Открыть коллекцию</a>
+        </div>
+    </article>
+</div>

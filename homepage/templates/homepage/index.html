@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Главная — Арт-галерея{% endblock %}
+{% block content %}
+<section class="hero-panel p-4 p-md-5 rounded-3">
+    <h1 class="display-5 page-title">Система учёта работ художника</h1>
+    <p class="lead">
+        Веб-каталог произведений искусства и галерейных коллекций.
+    </p>
+    <p>
+        Просматривайте сведения о картинах, авторах, годах создания,
+        материалах, техниках и составе коллекций.
+    </p>
+    <a href="{% url 'paints:list' %}" class="btn btn-primary me-2">
+        Каталог работ
+    </a>
+    <a href="{% url 'collections:list' %}"
+       class="btn btn-outline-secondary">
+        Коллекции
+    </a>
+</section>
+{% endblock %}

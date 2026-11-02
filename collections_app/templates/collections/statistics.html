@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Статистика — Арт-галерея{% endblock %}
+{% block content %}
+<h1 class="page-title">Статистика арт-галереи</h1>
+<p class="lead">Всего произведений в каталоге: {{ total_paints }}</p>
+<h2 class="h4 mt-4">Количество работ по коллекциям</h2>
+<div class="list-group mb-4">
+    {% for item in collection_stats %}
+        <div class="list-group-item d-flex justify-content-between">
+            <span>{{ item.collection_name }}</span>
+            <strong>{{ item.paints_count }}</strong>
+        </div>
+    {% empty %}
+        <p class="text-muted">Данные о коллекциях отсутствуют.</p>
+    {% endfor %}
+</div>
+<h2 class="h4">Произведения по художникам</h2>
+<div class="list-group">
+    {% for item in artist_stats %}
+        <div class="list-group-item">
+            <strong>{{ item.artist }}</strong>
+            <span class="text-muted"> — {{ item.paints_count }} работ,
+                {{ item.first_year }}–{{ item.last_year }} гг.</span>
+        </div>
+    {% empty %}
+        <p class="text-muted">Данные о художниках отсутствуют.</p>
+    {% endfor %}
+</div>
+{% endblock %}

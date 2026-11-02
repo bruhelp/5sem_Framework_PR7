@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+    {% if paint %}{{ paint.title }} — Арт-галерея
+    {% else %}Работа не найдена{% endif %}
+{% endblock %}
+{% block content %}
+{% if paint %}
+    <div class="row g-4">
+        <div class="col-lg-6">
+            {% if paint.image %}
+                <img src="{{ paint.image }}" class="img-fluid rounded artwork-image"
+                     alt="{{ paint.title }}">
+            {% else %}
+                <p class="text-muted">Изображение отсутствует.</p>
+            {% endif %}
+        </div>
+        <div class="col-lg-6">
+            <h1 class="page-title">{{ paint.title }}</h1>
+            <p><strong>Автор:</strong> {{ paint.artist }}</p>
+            <p><strong>Год создания:</strong> {{ paint.year }}</p>
+            <p><strong>Размер:</strong> {{ paint.size|default:"Не указан" }}</p>
+            <p><strong>Техника:</strong> {{ paint.technic|default:"Не указана" }}</p>
+            <p><strong>Материал:</strong> {{ paint.material|default:"Не указан" }}</p>
+            <p><strong>Коллекция:</strong>
+                <a href="{% url 'collections:detail' paint.collection_id %}">
+                    {{ paint.collection_name }}
+                </a>
+            </p>
+            <a href="{% url 'paints:list' %}"
+               class="btn btn-outline-secondary">К списку работ</a>
+        </div>
+    </div>
+{% else %}
+    <h1 class="text-danger">Работа не найдена</h1>
+    <p>Картина с указанным идентификатором отсутствует в каталоге.</p>
+    <a href="{% url 'paints:list' %}"
+       class="btn btn-outline-secondary">К списку работ</a>
+{% endif %}
+{% endblock %}

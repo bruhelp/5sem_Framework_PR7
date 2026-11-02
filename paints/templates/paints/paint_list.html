@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Каталог работ — Арт-галерея{% endblock %}
+{% block content %}
+<h1 class="page-title">{{ page_title }}</h1>
+<p class="text-muted">Всего работ: {{ paints|length }}</p>
+<p><a class="btn btn-outline-primary" href="{% url 'paints:search' %}">
+    Найти работы по периоду создания
+</a></p>
+<div class="row g-3">
+    {% for paint in paints %}
+        {% include "paints/includes/paint_card.html" %}
+    {% empty %}
+        <p class="text-muted">В каталоге пока нет работ.</p>
+    {% endfor %}
+</div>
+{% endblock %}

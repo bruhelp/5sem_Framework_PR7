@@ -1,0 +1,22 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2"
+           href="{% url 'homepage:index' %}">
+            <img src="{% static 'img/logo.svg' %}" alt="Логотип"
+                 width="34" height="34">
+            Арт-галерея
+        </a>
+        <div class="navbar-nav">
+            <a class="nav-link" href="{% url 'homepage:index' %}">Главная</a>
+            <a class="nav-link" href="{% url 'paints:list' %}">Работы</a>
+            <a class="nav-link" href="{% url 'paints:search' %}">Поиск</a>
+            <a class="nav-link" href="{% url 'collections:list' %}">
+                Коллекции
+            </a>
+            <a class="nav-link" href="{% url 'collections:statistics' %}">
+                Статистика
+            </a>
+        </div>
+    </div>
+</nav>

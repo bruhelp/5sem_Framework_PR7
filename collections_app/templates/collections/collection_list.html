@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Коллекции — Арт-галерея{% endblock %}
+{% block content %}
+<h1 class="page-title">Галерейные коллекции</h1>
+<div class="row g-3">
+    {% for collection in collections %}
+        {% include "collections/includes/collection_card.html" %}
+    {% empty %}
+        <p class="text-muted">Коллекции пока не созданы.</p>
+    {% endfor %}
+</div>
+{% endblock %}

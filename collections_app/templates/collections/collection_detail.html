@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}
+    {% if collection %}{{ collection.name }} — Арт-галерея
+    {% else %}Коллекция не найдена{% endif %}
+{% endblock %}
+{% block content %}
+{% if collection %}
+    <h1 class="page-title">{{ collection.name }}</h1>
+    <p class="lead">{{ collection.description|default:"Описание отсутствует." }}</p>
+    <h2 class="h4 mt-4">Произведения коллекции</h2>
+    <ul class="list-group mb-3">
+        {% for paint in paints %}
+            <li class="list-group-item d-flex justify-content-between">
+                <a href="{% url 'paints:detail' paint.id %}">
+                    {{ paint.title }}
+                </a>
+                <span class="text-muted">
+                    {{ paint.artist }} · {{ paint.year }}
+                </span>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-muted">
+                В этой коллекции пока нет работ.
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h1 class="text-danger">Коллекция не найдена</h1>
+    <p>Коллекция с указанным идентификатором отсутствует.</p>
+{% endif %}
+<a href="{% url 'collections:list' %}"
+   class="btn btn-outline-secondary">К списку коллекций</a>
+{% endblock %}

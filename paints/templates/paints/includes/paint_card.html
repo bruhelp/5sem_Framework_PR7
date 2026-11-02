@@ -1,0 +1,17 @@
+<div class="col-md-6 col-lg-4">
+    <article class="card h-100 artwork-card">
+        <div class="card-body">
+            <h2 class="h5 card-title">{{ paint.title }}</h2>
+            <p class="card-text text-muted">{{ paint.artist }}</p>
+            <p class="mb-3">
+                <span class="badge text-bg-secondary">
+                    {{ paint.year }} г.
+                </span>
+            </p>
+            <a href="{% url 'paints:detail' paint.id %}"
+               class="btn btn-outline-primary">
+                Подробнее
+            </a>
+        </div>
+    </article>
+</div>

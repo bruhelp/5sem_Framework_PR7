@@ -1,0 +1,24 @@
+[
+    {
+        "id": 1,
+        "title": "Демон сидящий",
+        "artist": "Михаил Александрович Врубель",
+        "size": "116.5 на 213.8",
+        "year": 1890,
+        "image": "https://artchive.ru/res/media/img/oy800/work/084/7582302.webp",
+        "technic": "Масло",
+        "material": "Холст",
+        "collection_id": 1
+    },
+    {
+        "id": 2,
+        "title": "Царевна-Лебедь",
+        "artist": "Михаил Александрович Врубель",
+        "size": "142.5 на 93.5",
+        "year": 1900,
+        "image": "https://artchive.ru/res/media/img/oy800/work/084/7582303.webp",
+        "technic": "Масло",
+        "material": "Холст",
+        "collection_id": 1
+    }
+]
